@@ -99,8 +99,5 @@ class Playbook(object):
     def _add_service_restart(self, tasks, service):
         tasks.append({
             "name": "restart {}".format(service),
-            "service": {
-                "name": service,
-                "state": "restarted",
-            }
+            "raw": "sudo systemctl restart {}".format(service)
         })
